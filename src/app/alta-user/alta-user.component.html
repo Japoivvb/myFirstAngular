@@ -2,41 +2,54 @@
 <p>usando parametros {{nomUser}}</p>
 <img src="buena.png" />
 <!-- directive, to list users in different div -->
+<hr style="height:20px;border:none;color:#333;background-color:#333;">
 <div>
-    <ul *ngFor="let user of users">        
+    <h2>list array users in different div</h2>
+    <ul *ngFor="let user of users">
         {{user}}
     </ul>
 </div>
+<hr style="height:20px;border:none;color:#333;background-color:#333;">
 <!-- directive, to list users in same div -->
 <div>
-    <ng-container *ngFor="let user of users">        
+    <h2>list array users in same div</h2>
+    <ng-container *ngFor="let user of users">
         {{user}}
     </ng-container>
 </div>
-<!-- directive, to list users in json format -->
-<div>
-    <h2>list json users</h2>
-    <ng-container *ngFor="let key of objectKeys(usersJson)">  
-        <div> {{key}} - {{usersJson[key]}}</div>
-    </ng-container>
-</div>
-<!-- directive, to list users from database-->
-<div>
-    <h2>list json users database</h2>
-    <ng-container *ngFor="let user of usersDatabase">  
-        <div> id:{{user.id}}</div>
-        <div> id:{{user.name}}</div>
-        <div> id:{{user.password}}</div>
-        <div> id:{{user.email}}</div>
-    </ng-container>
-</div>
+<hr style="height:20px;border:none;color:#333;background-color:#333;">
 <!-- directive, to list users from objects-->
 <div>
     <h2>list objects users database from service</h2>
-    <ng-container *ngFor="let user of usersObjects">  
-        <div> id:{{user.id}}</div>
-        <div> id:{{user.name}}</div>
-        <div> id:{{user.password}}</div>
-        <div> id:{{user.email}}</div>
-    </ng-container>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>PASSWORD</th>
+            <th>EMAIL</th>
+        </tr>
+        <ng-container *ngFor="let user of usersObjects">
+            <tr>
+                <td> {{user.id}}</td>
+                <td> {{user.name}}</td>
+                <td> {{user.password}}</td>
+                <td> {{user.email}}</td>
+            </tr>
+        </ng-container>
+    </table>
 </div>
+<hr style="height:20px;border:none;color:#333;background-color:#333;">
+<!-- form to add user -->
+<form (submit)="addUser()">
+    name:<input type="text" name="user" [(ngModel)]="user.name">
+    {{user.name}}<br />
+    <label>
+        password:
+        <input type="password" name="password" [(ngModel)]="user.password">
+    </label><br />
+    email:<input type="email" name="email" [(ngModel)]="user.email"><br /><br />
+    <button type="submit" value="addUser">
+        Add user
+    </button>
+</form>
+<div>Result: {{message}}</div>

@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IniciComponent } from './inici/inici.component';
 import { AltaUserComponent } from './alta-user/alta-user.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -14,9 +17,10 @@ import { AltaUserComponent } from './alta-user/alta-user.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
