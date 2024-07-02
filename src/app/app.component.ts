@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myAngular';
+  subtitle = 'mySubtitle';
+
+
+  hello(){  
+    this.title="user has clicked!"
+}
 }

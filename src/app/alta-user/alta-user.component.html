@@ -1,0 +1,42 @@
+<p>alta-user works!</p>
+<p>usando parametros {{nomUser}}</p>
+<img src="buena.png" />
+<!-- directive, to list users in different div -->
+<div>
+    <ul *ngFor="let user of users">        
+        {{user}}
+    </ul>
+</div>
+<!-- directive, to list users in same div -->
+<div>
+    <ng-container *ngFor="let user of users">        
+        {{user}}
+    </ng-container>
+</div>
+<!-- directive, to list users in json format -->
+<div>
+    <h2>list json users</h2>
+    <ng-container *ngFor="let key of objectKeys(usersJson)">  
+        <div> {{key}} - {{usersJson[key]}}</div>
+    </ng-container>
+</div>
+<!-- directive, to list users from database-->
+<div>
+    <h2>list json users database</h2>
+    <ng-container *ngFor="let user of usersDatabase">  
+        <div> id:{{user.id}}</div>
+        <div> id:{{user.name}}</div>
+        <div> id:{{user.password}}</div>
+        <div> id:{{user.email}}</div>
+    </ng-container>
+</div>
+<!-- directive, to list users from objects-->
+<div>
+    <h2>list objects users database from service</h2>
+    <ng-container *ngFor="let user of usersObjects">  
+        <div> id:{{user.id}}</div>
+        <div> id:{{user.name}}</div>
+        <div> id:{{user.password}}</div>
+        <div> id:{{user.email}}</div>
+    </ng-container>
+</div>
